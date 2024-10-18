@@ -1,0 +1,11 @@
+<strings>
+
+    <string id="AppName">App</string>
+
+    <string id="BackgroundColorTitle">Background Color</string>
+    <string id="ForegroundColorTitle">Foreground Color</string>
+
+    <string id="ColorBlack">Black</string>
+    <string id="ColorWhite">White</string>
+
+</strings>
