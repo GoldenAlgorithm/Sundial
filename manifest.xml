@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<iq:manifest version="3" xmlns:iq="http://www.garmin.com/xml/connectiq">
+    <iq:application id="045ec09c-0555-4974-bfb5-273a8ba918c1" type="watchface" name="@Strings.AppName" entry="SundialApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.0.0">
+        <iq:products>
+            <iq:product id="fenix847mm"/>
+        </iq:products>
+        <iq:permissions>
+            <iq:uses-permission id="ComplicationSubscriber"/>
+        </iq:permissions>
+        <iq:languages>
+            <iq:language>dut</iq:language>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+        <iq:barrels/>
+    </iq:application>
+</iq:manifest>
