@@ -17,7 +17,7 @@ class SundialWatchFace extends WatchUi.WatchFace {
   private const _MARK4_WIDTH_SCALE_TO_MARK60         as Float = 3.00;
   private const _MARK4_LENGTH_SCALE_TO_MARK60        as Float = 1.75;
 
-  private const _HOUR_HAND_WIDTH_SCALE               as Float = 0.08;
+  private const _HOUR_HAND_WIDTH_SCALE               as Float = 0.10;
   private const _HOUR_HAND_LENGTH_SCALE              as Float = 0.55;
   private const _HOUR_HAND_ACCENT_WIDTH_SCALE        as Float = _HOUR_HAND_WIDTH_SCALE * 0.30;
   private const _MINUTE_HAND_WIDTH_SCALE             as Float = _HOUR_HAND_WIDTH_SCALE;
@@ -25,7 +25,7 @@ class SundialWatchFace extends WatchUi.WatchFace {
   private const _MINUTE_HOUR_HAND_ACCENT_WIDTH_SCALE as Float = _MINUTE_HAND_WIDTH_SCALE * 0.30;
   private const _SECOND_HAND_WIDTH_SCALE             as Float = 0.02;
   private const _SECOND_HAND_LENGTH_SCALE            as Float = _MINUTE_HAND_LENGTH_SCALE;
-  private const _SECOND_HAND_TIP_LENGTH_SCALE        as Float = 0.05;
+  private const _SECOND_HAND_TIP_LENGTH_SCALE        as Float = 0.10;
 
   private const _CENTER_INNER_RADIUS_SCALE           as Float = _HOUR_HAND_ACCENT_WIDTH_SCALE >= _MINUTE_HOUR_HAND_ACCENT_WIDTH_SCALE ? _HOUR_HAND_ACCENT_WIDTH_SCALE : _MINUTE_HOUR_HAND_ACCENT_WIDTH_SCALE;
   private const _CENTER_RADIUS_SCALE                 as Float = _HOUR_HAND_WIDTH_SCALE >= _MINUTE_HAND_WIDTH_SCALE ? _HOUR_HAND_WIDTH_SCALE / 2.00 : _MINUTE_HAND_WIDTH_SCALE / 2.00;
