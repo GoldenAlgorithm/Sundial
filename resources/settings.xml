@@ -1,0 +1,10 @@
+<settings>
+
+    <setting propertyKey="@Properties.ThemeIndex" title="@Strings.ThemeLabel">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.ThemeDark</listEntry>
+            <listEntry value="1">@Strings.ThemeLight</listEntry>
+        </settingConfig>
+    </setting>
+
+</settings>

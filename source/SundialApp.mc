@@ -16,7 +16,8 @@ class SundialApp extends Application.AppBase {
 
   function getInitialView() as [Views] or [Views, InputDelegates] {
     var view = new SundialWatchFace();
-    return [view];
+    var inputDelegate = new SundialWatchFaceDelegate(view);
+    return [ view, inputDelegate ];
   }
 
 }
