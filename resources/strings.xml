@@ -1,0 +1,7 @@
+<strings>
+    <string id="AppName">Sundial</string>
+    <string id="SettingsLabel">Settings</string>
+    <string id="ThemeLabel">Theme</string>
+    <string id="ThemeDark">Dark</string>
+    <string id="ThemeLight">Light</string>
+</strings>
