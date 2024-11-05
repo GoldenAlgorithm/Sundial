@@ -8,18 +8,21 @@ class SundialApp extends Application.AppBase {
     AppBase.initialize();
   }
 
-  function onStart(state as Dictionary?) as Void {
-  }
-
-  function onStop(state as Dictionary?) as Void {
-  }
-
   function getInitialView() as [Views] or [Views, InputDelegates] {
     var view = new SundialWatchFace();
     var inputDelegate = new SundialWatchFaceDelegate(view);
     return [ view, inputDelegate ];
   }
 
+  function getSettingsView() as [ WatchUi.Views ] or [ WatchUi.Views, WatchUi.InputDelegates ] or Null {
+        var view = new SundialSettingsMenu();
+        var inputDelegate = new SundialSettingsMenuDelegate(view);
+        return [view, inputDelegate];
+    }
+    
+    function onSettingsChanged() as Void {
+        WatchUi.requestUpdate();
+    }
 }
 
 function getApp() as SundialApp {

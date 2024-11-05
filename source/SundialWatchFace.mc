@@ -5,18 +5,16 @@ import Toybox.WatchUi;
 
 class SundialWatchFace extends WatchUi.WatchFace {
 
-  private var _screenRadius as Float = SundialAppSettings.getScreenWidth() <= SundialAppSettings.getScreenHeight() ? SundialAppSettings.getScreenWidth() / 2.0 : SundialAppSettings.getScreenHeight() / 2.0;
+  private var _screenRadius as Float = SundialSettings.getScreenWidth() <= SundialSettings.getScreenHeight() ? SundialSettings.getScreenWidth() / 2.0 : SundialSettings.getScreenHeight() / 2.0;
   private var _screenCenter_X_Y as [Float, Float] = [_screenRadius, _screenRadius];
   
   //Watch Face (all scales are based on _screenRradius)
   private const _MARK60_WIDTH_SCALE                  as Float = 0.01;
   private const _MARK60_LENGTH_SCALE                 as Float = 0.05;
-
   private const _MARK12_WIDTH_SCALE_TO_MARK60        as Float = 2.00;
   private const _MARK12_LENGTH_SCALE_TO_MARK60       as Float = 1.50;
   private const _MARK4_WIDTH_SCALE_TO_MARK60         as Float = 3.00;
   private const _MARK4_LENGTH_SCALE_TO_MARK60        as Float = 1.75;
-
   private const _HOUR_HAND_WIDTH_SCALE               as Float = 0.10;
   private const _HOUR_HAND_LENGTH_SCALE              as Float = 0.55;
   private const _HOUR_HAND_ACCENT_WIDTH_SCALE        as Float = _HOUR_HAND_WIDTH_SCALE * 0.30;
@@ -25,12 +23,12 @@ class SundialWatchFace extends WatchUi.WatchFace {
   private const _MINUTE_HOUR_HAND_ACCENT_WIDTH_SCALE as Float = _MINUTE_HAND_WIDTH_SCALE * 0.30;
   private const _SECOND_HAND_WIDTH_SCALE             as Float = 0.02;
   private const _SECOND_HAND_LENGTH_SCALE            as Float = _MINUTE_HAND_LENGTH_SCALE;
-  private const _SECOND_HAND_TIP_LENGTH_SCALE        as Float = 0.10;
-
+  private const _SECOND_HAND_TIP_LENGTH_SCALE        as Float = 0.15;
   private const _CENTER_INNER_RADIUS_SCALE           as Float = _HOUR_HAND_ACCENT_WIDTH_SCALE >= _MINUTE_HOUR_HAND_ACCENT_WIDTH_SCALE ? _HOUR_HAND_ACCENT_WIDTH_SCALE : _MINUTE_HOUR_HAND_ACCENT_WIDTH_SCALE;
   private const _CENTER_RADIUS_SCALE                 as Float = _HOUR_HAND_WIDTH_SCALE >= _MINUTE_HAND_WIDTH_SCALE ? _HOUR_HAND_WIDTH_SCALE / 2.00 : _MINUTE_HAND_WIDTH_SCALE / 2.00;
   private const _CENTER_OUTER_RADIUS_SCALE           as Float = _CENTER_RADIUS_SCALE * 1.75;
-  
+
+  // Polygons
   // Marks
   private var _mark60Polygon              as Array<Point2D>;
   private var _mark12Polygon              as Array<Point2D>;
@@ -46,12 +44,14 @@ class SundialWatchFace extends WatchUi.WatchFace {
   // Second hand
   private var _secondHandPolygon as Array<Point2D>;
   private var _secondHandTipPolygon as Array<Point2D>;
-  // Complications
+  
+  // Complications TODO
 
   //Modes
   private var _isInHighPowerMode as Boolean;
   
   function initialize() {
+
     WatchFace.initialize();
 
     var affineTransform = new Graphics.AffineTransform();
@@ -70,6 +70,8 @@ class SundialWatchFace extends WatchUi.WatchFace {
     _mark60Polygon = affineTransform.transformPoints(_mark60Polygon);
     _mark12Polygon = affineTransform.transformPoints(_mark12Polygon);
     _mark4Polygon = affineTransform.transformPoints(_mark4Polygon);
+
+    // Complications TODO
     
     // Hour hand
     _hourHandLeftSidePolygon = [
@@ -119,18 +121,18 @@ class SundialWatchFace extends WatchUi.WatchFace {
       [_screenRadius * _SECOND_HAND_WIDTH_SCALE / 2.0, -_screenRadius * _SECOND_HAND_LENGTH_SCALE + _screenRadius * _SECOND_HAND_TIP_LENGTH_SCALE]];
     
     _isInHighPowerMode = System.getDisplayMode() == System.DISPLAY_MODE_HIGH_POWER;
+
   }
 
   function onLayout(dc as Dc) as Void {
-    dc.setAntiAlias(true);
-  }
 
-  function onShow() as Void {
+    dc.setAntiAlias(true);
+
   }
 
   function onUpdate(dc as Dc) as Void {
         
-    var theme = SundialAppSettings.getTheme(SundialAppSettings.getThemeIndex());
+    var theme = SundialSettings.getCurrentTheme();
         
     clearScrean(dc, theme);
     if (_isInHighPowerMode) {
@@ -138,26 +140,30 @@ class SundialWatchFace extends WatchUi.WatchFace {
     } else {
         drawLowPowerWatchFace(dc, theme);
     }
-  }
 
-  function onHide() as Void {
   }
 
   function onExitSleep() as Void {
+
     _isInHighPowerMode = true;
+
   }
 
   function onEnterSleep() as Void {
+
     _isInHighPowerMode = false;
+
   }
 
   function clearScrean(dc as Dc, theme as Dictionary<String, String or Number>) as Void {
+    
     if (_isInHighPowerMode) {
         dc.setColor(theme["HighPowerBackgroundColor"], theme["HighPowerBackgroundColor"]);
     } else {
         dc.setColor(theme["LowPowerBackgroundColor"], theme["LowPowerBackgroundColor"]);
     }
     dc.clear();
+
   }
 
   function drawHighPowerWatchFace(dc as Dc, theme as Dictionary<String, String or Number>) as Void {

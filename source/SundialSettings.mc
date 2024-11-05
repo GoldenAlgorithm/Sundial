@@ -3,7 +3,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.System;
 
-public class SundialAppSettings {
+public class SundialSettings {
     private static var screenWidth as Float?;
     private static var screenHeight as Float?;
 
@@ -47,8 +47,12 @@ public class SundialAppSettings {
     public static function setThemeIndex(themeIndex as Number) {
         Application.Properties.setValue(PROPERTYID_THEME, themeIndex);
     }
-    public static function getTheme(index as Number) as Dictionary<String, String or Number> {
-        return THEMES[index]; //TODO: Add error handling
+    public static function getAllThemes() as Array<Dictionary<String, String or Number>> {
+        return THEMES; //TODO: Add error handling
+    }
+
+    public static function getCurrentTheme() as Dictionary<String, String or Number> {
+        return THEMES[getThemeIndex()];
     }
 
     // Device Settings
