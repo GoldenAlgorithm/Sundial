@@ -18,13 +18,21 @@ Looking at it as a hobby project, so **use the code at your own risk ;) !**
 
 - [X] Clean analog watch face
 - [X] Localization
-- [X] Settings ([X] Apps / [ ] On-Watch)
+- [X] Settings ([X] Apps / [X] On-device)
   - [X] Themes
   - [ ] Colors
   - [ ] Complications
 
+*After feature complete time for other devices.*
 
 ## What's new
+
+### 1.1.0
+- Added on-device setting
+
+>*Still waiting for completion of the verification process to submit apps to the Connect IQ Store in te European Economic Area.  
+Till that day comes I can't submit this watch face to the store.  
+Sideloading for now, which means settings are not available in the apps*
 
 ### 1.0.0
 - Initial public release
@@ -39,6 +47,3 @@ Looking at it as a hobby project, so **use the code at your own risk ;) !**
   - Dutch
 - CIQ 5.0.1 - System 7
  
->*Still waiting for completion of the verification process to submit apps to the Connect IQ Store in te European Economic Area.  
-Till that day comes I can't submit this watch face to the store.  
-Sideloading for now, which means settings are not available in the apps*
